@@ -9,3 +9,24 @@ document.querySelectorAll('nav a').forEach(anchor => {
     }
   });
 });
+
+function handleSearch(event) {
+  event.preventDefault();
+  const query = document.getElementById('navbarSearchInput').value.trim().toLowerCase();
+  const sections = {
+    'team': 'team',
+    'services': 'services',
+    'portfolio': 'portfolio',
+    'why choose us': 'why-choose-us',
+    'contact': 'contact'
+  };
+  if (sections[query]) {
+    const section = document.getElementById(sections[query]);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      return false;
+    }
+  }
+  alert('Section not found. Please try: Team, Services, Portfolio, Why Choose Us, Contact.');
+  return false;
+}
